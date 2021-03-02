@@ -1,0 +1,17 @@
+<form action='/figures' method="POST">
+  <input type="text" id="figure_name" name="figure[name]">
+  <p>To associate this historical figure with an existing title, please select below:</p>
+  <% Title.all.each do |title| %>
+    <input type="checkbox" name="figure[title_ids][]" id="title_<%= title.id %>" value="<%= title.id %>"><%= title.name %><br>
+  <% end %>
+  <p>To add a new title for this historical figure, fill in below:</p>
+  <input type="text" id="new_title" name="title[name]">
+  <p>To associate this historical figure with an existing landmark, please select below:</p>
+  <% Landmark.all.each do |landmark| %>
+    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>"><%= landmark.name %><br>
+  <% end %>
+  <p>To add a new landmark for this historical figure, fill in below:</p>
+  <input type="text" id="new_landmark" name="landmark[name]">
+  <input type="text" id="new_landmark_year" name="landmark[year_completed]">
+  <input type="submit" value="Create New Figure">
+</form>
